@@ -34,9 +34,9 @@ def split_img_label(data_train,data_test,folder_train,folder_test):
         os.system('mv '+data_test[test_ind[j]] + '  ./'+ folder_test + '/'  +data_test[test_ind[j]].split('/')[-1])
 
 
-data_path = '../../arama_dataset/labelled_data_football_only/'
-train_path = '../../arama_dataset/labelled_data_football_only/train'
-val_path = '../../arama_dataset/labelled_data_football_only/val'
+data_path = '../../arama_dataset/dataset_hd_crops/'
+train_path = '../../arama_dataset/dataset_hd_crops/train'
+val_path = '../../arama_dataset/dataset_hd_crops/val'
 
 list_img=[img for img in os.listdir(data_path) if img.endswith('.jpg')==True]
 list_txt=[img for img in os.listdir(data_path) if img.endswith('.txt')==True]
