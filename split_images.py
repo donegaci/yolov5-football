@@ -34,25 +34,31 @@ def split_img_label(data_train,data_test,folder_train,folder_test):
         os.system('mv '+data_test[test_ind[j]] + '  ./'+ folder_test + '/'  +data_test[test_ind[j]].split('/')[-1])
 
 
-data_path = '../../arama_dataset/dataset_hd_crops/'
-train_path = '../../arama_dataset/dataset_hd_crops/train'
-val_path = '../../arama_dataset/dataset_hd_crops/val'
 
-list_img=[img for img in os.listdir(data_path) if img.endswith('.jpg')==True]
-list_txt=[img for img in os.listdir(data_path) if img.endswith('.txt')==True]
+dirs = ["16_10_21_center_400imgs"]
+
+for d in dirs:
+    data_path = '../arama_dataset/%s/' % d
+    train_path = '../arama_dataset/%s/train' %d
+    val_path = '../arama_dataset/%s/val' %d
+
+    print(data_path)
+
+    list_img=[img for img in os.listdir(data_path) if img.endswith('.jpg')==True]
+    list_txt=[img for img in os.listdir(data_path) if img.endswith('.txt')==True]
 
 
-path_img=[]
+    path_img=[]
 
-for i in range (len(list_img)):
-    path_img.append(data_path+list_img[i])
-    
-df=pd.DataFrame(path_img)
+    for i in range (len(list_img)):
+        path_img.append(data_path+list_img[i])
+        
+    df=pd.DataFrame(path_img)
 
-print(df)
+    print(df)
 
-# split 
-data_train, data_test, labels_train, labels_test = train_test_split(df[0], df.index, test_size=0.20, random_state=42)
+    # split 
+    data_train, data_test, labels_train, labels_test = train_test_split(df[0], df.index, test_size=0.10, random_state=42)
 
-# Function split 
-split_img_label(data_train, data_test, train_path, val_path)
+    # Function split 
+    split_img_label(data_train, data_test, train_path, val_path)
